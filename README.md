@@ -13,7 +13,7 @@ This project is a dockerized backend project for a blogging platform called Blog
 - Support for uploading images to blog posts
 - Pagination for the list of all posts
 - Searching a blog post by its title/ content
-- Dockerized with wait-for-db handling
+- Dockerized the full backend
 
 
 
@@ -79,52 +79,62 @@ The application uses a PostgreSQL database with the following two primary tables
 
 ## API Endpoints
 
-> Base URL: `http://localhost:8000`
-
   POST- /register   - Register a new user 
+  
   POST- /login      - Authenticate user and get token 
+  
   GET - /me         - Getting the current user
+  
   GET - /blogs      - Get all blogs (supports pagination & search) 
+  
   GET - /blogs/{id} - Get a single blog post 
+  
   POST- /blogs      - Create a blog post (auth required) 
+  
   PUT - /blogs/{id} - Update a blog post (auth required) 
+  
   DELETE- /blogs/{id} - Delete a blog post (auth required) 
 
 ##  How to Run the Project
 
-### ✅ Prerequisites
+1. Prerequisites
+
 - [Docker](https://www.docker.com/) & Docker Compose installed
 - Clone this repo
 
-### 📁 Setup `.env` File
+2. Setup `.env` File
 
-Create a file named `.env` in the root directory and fill it like this:
+   Create a file named `.env` in the root directory and fill it as mention in `.env.example`
 
-```env
-DATABASE_URL=postgresql://postgres:postgres@db:5432/blogdb
-SECRET_KEY=your_super_secret_key
-ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=30
-```
-Run with Docker
+3. Run with Docker
 
-# Build and start all services
+```bash
 docker-compose up --build
-Your FastAPI app will be available at:
-📍 http://localhost:8000/docs ← for Swagger UI
+```
 
-Installing Dependencies (for local dev without Docker)
-If you want to run without Docker:
+4. Your FastAPI app will be available at:
+  - http://localhost:8000/docs    ← for Swagger UI
 
 
-python -m venv venv
-source venv/bin/activate  # on Windows use `venv\Scripts\activate`
-pip install -r requirements.txt
-Ensure PostgreSQL is installed locally and running. Update your .env accordingly.
+## Issues Encountered
 
-Common Issues Encountered
-Issue	Fix
-FastAPI starts before PostgreSQL is ready	Fixed using wait-for-db.sh script
-Environment variables not loading	Ensure .env is present and correct
-CORS errors in frontend	Add CORS middleware in FastAPI if needed
-Connection refused to DB	Check if db service is up, and Docker network is working properly
+- FastAPI starts before PostgreSQL is ready -	Fixed using wait-for-it.sh script
+- Environment variables not loading	Ensure  -   ensure .env is present and correct
+- Connection refused to DB -	Check if db service is up, and Docker network is working properly
+
+
+## Output
+
+![image](https://github.com/user-attachments/assets/21b4a2da-8d58-4761-9678-65c26acc226c)
+
+![image](https://github.com/user-attachments/assets/23a1a717-64b5-4d3c-a9b1-a7578a4f41ad)
+
+![image](https://github.com/user-attachments/assets/1a85eba4-ec6d-42eb-9c33-d2f73fd9c757)
+
+![image](https://github.com/user-attachments/assets/c70e195b-b452-40a9-a59f-2cd548b8de23)
+
+![image](https://github.com/user-attachments/assets/61a497ae-e11e-409d-9265-e6dfcd725a1d)
+
+
+
+
