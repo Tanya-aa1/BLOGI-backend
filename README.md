@@ -99,14 +99,22 @@ The application uses a PostgreSQL database with the following two primary tables
 
 1. Prerequisites
 
-- [Docker](https://www.docker.com/) & Docker Compose installed
-- Clone this repo
+   - [Docker](https://www.docker.com/) & Docker Compose installed
+   - Clone this repo
 
 2. Setup `.env` File
 
-   Create a file named `.env` in the root directory and fill it as mention in `.env.example`
+   Create a file named `.env` in the root directory and fill it as mentioned in `.env.example`
+   Fill it like this:
+   ```.env
+      DATABASE_URL=postgresql://postgres:postgres@db:5432/blogdb
+      SECRET_KEY=your_super_secret_key
+      ALGORITHM=HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES=30
+   
+   
 
-3. Run with Docker
+4. Run with Docker
 
 ```bash
 docker-compose up --build
