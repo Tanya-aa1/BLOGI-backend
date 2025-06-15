@@ -1,6 +1,10 @@
 from fastapi import FastAPI
 from routers import auth_router, post_router
 from fastapi.staticfiles import StaticFiles
+from database import engine
+import models
+
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
